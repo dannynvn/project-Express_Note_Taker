@@ -1,31 +1,12 @@
 [
    {
-      "title": "Test Title",
-      "text": "Test text"
+      "title": "first note",
+      "text": "salkfjdslfjds",
+      "id": "b440"
    },
    {
-      "uuid": "6384",
-      "title": "asdf",
-      "text": "asfd"
-   },
-   {
-      "uuid": "5653",
-      "title": "asdf",
-      "text": "asfd"
-   },
-   {
-      "uuid": "9546",
-      "title": "sadfds",
-      "text": "adsfds"
-   },
-   {
-      "title": "ko;kdg",
-      "text": "fdgdgfd",
-      "uuid": "0c5a"
-   },
-   {
-      "title": "lk;j;ldfj",
-      "text": ";lkdjflkjdsfad",
-      "uuid": "e296"
+      "title": "second note",
+      "text": "jadsfdskljfl;kjsdf",
+      "id": "9767"
    }
 ]

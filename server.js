@@ -17,12 +17,13 @@ app.use(express.static('public'));
 
 
 
-//get notes
+//get previously saved notes
 app.get('/api/notes',(req, res) => {
   res.sendFile(path.join(__dirname, "./db/db.json"));
 });
 
-// post and display notes
+
+// post and display note title and element on the left
 app.post('/api/notes', (req, res) => {
   
   console.info(`${req.method} request received to add a note`)
@@ -34,7 +35,7 @@ app.post('/api/notes', (req, res) => {
     const newNote = {
       title,
       text,
-      uuid: uuid(),
+      id: uuid(),
     };
   
   
@@ -63,36 +64,23 @@ app.post('/api/notes', (req, res) => {
 
     const response = {
       status: 'success',
-      body: newReview,
+      body: newNote,
     };
     
     console.log(response);
     res.status(201).json(response);
   } else {
-    res.status(500).json('Error in posting review');
+    res.status(500).json('Error in posting note');
   }
 });
 
+//retrieve and display a saved note 
+app.get('api/notes/:id', (req, res) => {
+  res.json(notes[req.params.id]);
+});
 
-  //create new note object with unique identifier
+
   
-
-  //push new note object into dataß
-  
-
-  //write updated data into db.json
-  // fs.writeFile('./db/db.json', JSON.stringify(allNotes), (err, data));
-
-
- 
-
-
-
-
-
-
-
-
 
 
 //GET Route for notes.html
