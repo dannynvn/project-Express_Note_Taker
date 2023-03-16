@@ -3,11 +3,10 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const uuid = require('./helpers/uuid');
-let allNotes = require('./db/db.json');
-// const api = require('./assets/js/index.js');
+
+const PORT = process.env.PORT || 3001;
 
 const app = express();
-const PORT = process.env.PORT || 3001;
 
 // Middleware for parsing JSON and urlencoded form data
 app.use(express.json());
@@ -24,36 +23,54 @@ app.get('/api/notes',(req, res) => {
 });
 
 // post and display notes
-app.post('/api/notes', function (req, res) {
+app.post('/api/notes', (req, res) => {
   
   console.info(`${req.method} request received to add a note`)
 
-  const newNote = {
-    uuid: uuid(),
-    title: req.body.title,
-    text: req.body.text
-  };
+  //destructure assignment
+  const { title, text } = req.body;
 
-  fs.readFile('./db/db.json', 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
-    } else {
-      // Convert string into JSON object
-      const allNotes = JSON.parse(data);
+  if (title && text) {
+    const newNote = {
+      title,
+      text,
+      uuid: uuid(),
+    };
+  
+  
+    //get existing notes
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+      if (err) {
+        console.error(err);
+      } else {
+        // Convert string into JSON object
+        const allNotes = JSON.parse(data);
 
-      // Add a new review
-      allNotes.push(newNote);
+        // Add a new note
+        allNotes.push(newNote);
 
-      fs.writeFile(
-        './db/db.json',
-        JSON.stringify(allNotes, null, 3),
-        (writeErr) =>
-          writeErr
-            ? console.error(writeErr)
-            : console.info('Successfully updated notes!')
-      );
-    }
-  });
+        // write updated notes back to file
+        fs.writeFile(
+          './db/db.json',
+          JSON.stringify(allNotes, null, 3),
+          (writeErr) =>
+            writeErr
+              ? console.error(writeErr)
+              : console.info('Successfully updated notes!')
+        );
+      }
+    });
+
+    const response = {
+      status: 'success',
+      body: newReview,
+    };
+    
+    console.log(response);
+    res.status(201).json(response);
+  } else {
+    res.status(500).json('Error in posting review');
+  }
 });
 
 
