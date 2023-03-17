@@ -25,5 +25,5 @@ Currently planned but not yet implemented:
 
 
 ## Screenshots
-![Preview of application in web browser]()
+![Preview of application in web browser](/images/app-screenshot.png)
 
