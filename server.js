@@ -44,10 +44,10 @@ app.post('/api/notes', (req, res) => {
       if (err) {
         console.error(err);
       } else {
-        // Convert string into JSON object
+        // convert string into JSON object
         const allNotes = JSON.parse(data);
 
-        // Add a new note
+        // add a new note
         allNotes.push(newNote);
 
         // write updated notes back to file
@@ -80,7 +80,7 @@ app.get('api/notes/:id', (req, res) => {
 });
 
 
-  
+
 
 
 //GET Route for notes.html

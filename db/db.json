@@ -1,12 +1,17 @@
 [
    {
       "title": "first note",
-      "text": "salkfjdslfjds",
+      "text": "first test note",
       "id": "b440"
    },
    {
       "title": "second note",
-      "text": "jadsfdskljfl;kjsdf",
+      "text": "second test note",
       "id": "9767"
+   },
+   {
+      "title": "third note",
+      "text": "third test note",
+      "id": "54ce"
    }
 ]
